@@ -88,10 +88,10 @@ def proxyINFO(df):
     for item in HTTPS: ## convert HTTPS list with rows 'yes', 'no' to 'https', 'http' respectively and store them in HTTPS1 variable
         if item == "yes":
             print (item)
-            HTTPS1.append("https")  ## i write it like this because I'm going to concat all three components later. Right now it should print "'https':https://"
+            HTTPS1.append("https://")  ## i write it like this because I'm going to concat all three components later. Right now it should print "'https':https://"
         else:
             print(item)
-            HTTPS1.append("http")
+            HTTPS1.append("http://")
     print(proxyPort, proxyIP, HTTPS)
     return proxy_construct(proxyPort, proxyIP, HTTPS1)    ## this will start the next function and feed it the arguments proxyPort, ProxyIP, HTTPS1
 
@@ -104,7 +104,7 @@ def proxy_construct(proxyPort, proxyIP, HTTPS1):
 
     proxy_list = []
     for i in range(0, len(proxyPort)):      ## using for loop starting from 0 to size of proxyPort list. Doesn't matter which list you use. They should all be the same size
-        PROXY = "http://" + proxyIP[i] + proxyPort[i]
+        PROXY = HTTPS1[i] + proxyIP[i] + proxyPort[i]
         proxy_list.append(PROXY)
         print(PROXY)
     print(proxy_list)
