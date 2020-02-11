@@ -14,8 +14,12 @@ def get_scholarships(soup):
     df = pd.read_html(str(soup))
     df = df[0]
     print(df)
-    #remove , and $ in column
+    
+    return df
 
+def data_clean(df): 
+    #remove , and $ in column
+    
     df = df[df['Amount'] != "Varies"]
     df['amount_cleaned'] = df['Amount'].str.replace(',','')
     df['amount_cleaned'] = df['amount_cleaned'].str.replace('$', '')
