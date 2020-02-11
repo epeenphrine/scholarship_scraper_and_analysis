@@ -4,4 +4,5 @@ from config import url
 
 
 soup = connection.connect()
-scholarships_parser.get_directories(soup)
+#scholarships_parser.get_directories(soup)
+scholarships_parser.get_scholarships(soup)
