@@ -5,11 +5,10 @@ import random
 import urllib.request
 import bs4 as bs
 import proxyscrape as scrape
-from config import url
 
 
 #file checks / proxy rotation / connection 
-def connect():
+def connect(url):
     if os.path.exists("proxydictlist.json"):
         with open("proxydictlist.json") as f:
             proxies_list = json.load(f)
@@ -57,4 +56,4 @@ def connect():
         scrape.proxyscrape()
         print("\n")
         print("got new proxies ..... ")
-        return connect()
+        return connect(url)
