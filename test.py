@@ -1,5 +1,7 @@
-import proxyscrape 
+import scholarships_parser
+import connection
+from config import url
 
-scrape = proxyscrape.proxyscrape()
 
-print(scrape)
+soup = connection.connect()
+scholarships_parser.get_directories(soup)

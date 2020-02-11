@@ -28,8 +28,7 @@ def proxyscrape():
         print("json file doesn't exist creating json file ...")
         json_create()
         proxies_list = json_load()
-
-    url = "https://free-proxy-list.net/" ## site containing the proxy.
+    url = "https://free-proxy-list.net/"
     print(f"attempting to connect to: {url}")
     print(len(proxies_list))
     if proxies_list: ## check if proxies_list is empty or not
