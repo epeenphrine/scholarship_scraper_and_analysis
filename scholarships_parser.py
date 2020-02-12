@@ -16,11 +16,11 @@ def get_directories(soup):
             print("\n")
             print(href)
             directories_name.append(text)
-            file_paths.append(f' {base_url} {a["href"]}')
-    
+            file_paths.append(f' {base_url}{a["href"]}')
     print(file_paths)
+    return get_directories2(file_paths)
 
+def get_directories2(file_paths):
     for file_path in file_paths:
         soup = connect(file_path)
-        get_directories(soup)
-
+        print(soup)

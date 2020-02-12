@@ -45,7 +45,6 @@ def proxyscrape():
                 req = urllib.request.Request(url, headers={'User-Agent' : "Magic Browser"})
                 sauce = urllib.request.urlopen(req, timeout=5).read()
                 soup = bs.BeautifulSoup(sauce, 'lxml')
-                print(soup)
             except:
                 ## proxies that do not work are removed from the list
                 print(f"{pick} did not work")
@@ -57,7 +56,6 @@ def proxyscrape():
         req = urllib.request.Request(url, headers={'User-Agent': "Magic Browser"})
         sauce = urllib.request.urlopen(req).read()
         soup=bs.BeautifulSoup(sauce, 'lxml')
-        print(soup)
 
     ## use pandas to get tables and choose columns
 
