@@ -1,13 +1,16 @@
 import pandas as pd
+import re
 
+base_url = "https://scholarships.com"
 def get_directories(soup):
     directories = []
     for a in soup.findAll('a', href=True):
         text = a.get_text(strip=True)
         href = a['href']
-        if "financial-aid" in href:
-            print(f"text {text}\n")
-            print(href)
+        if re.match(r"^/financial-aid/college-scholarships/scholarship-directory/", href):
+            
+            compiled = f"{base_url}{href}"
+            directories.append(compiled)
     return directories
 
 def get_scholarships(soup):
