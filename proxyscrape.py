@@ -31,6 +31,7 @@ def proxyscrape():
     url = "https://free-proxy-list.net/"
     print(f"attempting to connect to: {url}")
     print(len(proxies_list))
+    
     if proxies_list: ## check if proxies_list is empty or not
         for i in range(0, len(proxies_list)):
             try:
