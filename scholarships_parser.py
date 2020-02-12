@@ -1,5 +1,7 @@
 import re 
-import connection.connect as connect
+from connection import connect 
+
+base_url = 'https://scholarships.com'
 
 def get_directories(soup):
     search = soup.findAll('a', href=True)
@@ -14,12 +16,11 @@ def get_directories(soup):
             print("\n")
             print(href)
             directories_name.append(text)
-            directories.append(a['href'])
+            file_paths.append(f' {base_url} {a["href"]}')
     
+    print(file_paths)
+
     for file_path in file_paths:
         soup = connect(file_path)
         get_directories(soup)
 
-    print(directories)
-    print(directories_name)
-    return directories

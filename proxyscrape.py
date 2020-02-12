@@ -32,26 +32,26 @@ def proxyscrape():
     print(f"attempting to connect to: {url}")
     print(len(proxies_list))
     if proxies_list: ## check if proxies_list is empty or not
-        try:
-            pick = random.choice(proxies_list)
+        for i in range(0, len(proxies_list)):
+            try:
+                pick = random.choice(proxies_list)
 
-            ## configuring urllib for use with proxies
-            proxy_support = urllib.request.ProxyHandler(pick)
-            opener = urllib.request.build_opener(proxy_support)
-            urllib.request.install_opener(opener)
+                ## configuring urllib for use with proxies
+                proxy_support = urllib.request.ProxyHandler(pick)
+                opener = urllib.request.build_opener(proxy_support)
+                urllib.request.install_opener(opener)
 
-            ## requests
-            req = urllib.request.Request(url, headers={'User-Agent' : "Magic Browser"})
-            sauce = urllib.request.urlopen(req, timeout=5).read()
-            soup = bs.BeautifulSoup(sauce, 'lxml')
-            print(soup)
-        except:
-            ## proxies that do not work are removed from the list
-            print(f"{pick} did not work")
-            proxies_list.remove(pick)
-            print(f"{pick} removed")
-            print(len(proxies_list))
-            print(Exception)
+                ## requests
+                req = urllib.request.Request(url, headers={'User-Agent' : "Magic Browser"})
+                sauce = urllib.request.urlopen(req, timeout=5).read()
+                soup = bs.BeautifulSoup(sauce, 'lxml')
+                print(soup)
+            except:
+                ## proxies that do not work are removed from the list
+                print(f"{pick} did not work")
+                proxies_list.remove(pick)
+                print(f"{pick} removed")
+                print(len(proxies_list))
 
     else: ## if proxies_list is empty, we get our proxies without configuring urllib for using proxies
         req = urllib.request.Request(url, headers={'User-Agent': "Magic Browser"})
