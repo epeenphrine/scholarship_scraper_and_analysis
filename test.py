@@ -5,6 +5,6 @@ from proxyscrape import proxyscrape as scrape
 
 
 soup = connect(url)
-scholarships_parser.get_directories(soup)
+print(soup)
 
 #scholarships_parser.get_directories(soup)
