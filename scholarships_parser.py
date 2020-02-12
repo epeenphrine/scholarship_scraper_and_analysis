@@ -21,6 +21,12 @@ def get_directories(soup):
     return get_directories2(file_paths)
 
 def get_directories2(file_paths):
+    length = len(file_paths)
+    count = 0
+    print(f"count: {count}")
     for file_path in file_paths:
         soup = connect(file_path)
+        count += 1 
         print(soup)
+        print(f" \n ******************************************************************* ")
+        print(f" {count} / {length}")
