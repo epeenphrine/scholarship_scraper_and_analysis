@@ -9,11 +9,7 @@ import proxyscrape as scrape
 
 #file checks / proxy rotation / connection 
 def connect(url):
-<<<<<<< HEAD
-    if os.path.exists("proxydictlist.json"):
-=======
     if os.path.exists("proxydictlist.json"): #file check logic 
->>>>>>> get_scholarships
         with open("proxydictlist.json") as f:
             proxies_list = json.load(f)
             print(f"attempting to connect to: {url}")

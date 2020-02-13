@@ -25,7 +25,15 @@ for directory in directories:
 for soup in soup_pool:
     directories_dict = scholarships.get_directories_dict(soup, directories_dict)
 
-print(directories_dict)
+
+
+soup_pool = []
+print(directories)
+#for directory in directories:
+#    soup_pool.append(connect(directory))
+#for soup in soul_pool:
+#    scholarships.get_scholarships(soup)
+
 print('\n')
 print('*************************************')
 

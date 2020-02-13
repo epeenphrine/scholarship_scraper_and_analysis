@@ -47,14 +47,14 @@ def get_directories_dict(soup, *args):
     directories_dict = dict(zip(titles, constructed_urls))
     return directories_dict
 
-                
-    return directories_dict
-
 def get_scholarships(soup):
-    df = pd.read_html(str(soup))
-    df = df[0]
-    print(df)
-    return data_clean(df)
+    try:
+        df = pd.read_html(str(soup))
+        df = df[0]
+        print(df)
+        return data_clean(df)
+    except:
+        print('no table present')
 
 def data_clean(df): 
     #remove , and $ in column
