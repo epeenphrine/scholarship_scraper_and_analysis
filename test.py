@@ -7,15 +7,22 @@ import scholarships_parser as scholarships
 from connection import connect
 from config import url
 
+
 soup = connect(url) ## single soup object
 soup_pool = [] ## list of soup objects
 soup_puddle = [] ## a nested list of soup objects
 
-directories_dict= scholarships.get_directories(soup) ## starts here to try to get all directories from the site 
-directories = scholarships.directories(directories_dict)
-titles = scholarships.get_title(directories_dict)
+directories_dict = scholarships.get_directories_dict(soup) ## starts here to try to get all directories from the site 
+directories = scholarships.get_directories(directories_dict)
+for directory in directories:
+    soup_pool.append(connect(directory))
 
+for soup in soup_pool:
+    directories_dict = scholarships.get_directories_dict(soup, directories_dict)
+
+print(directories_dict)
 print('\n')
+print('*************************************')
 
 
 #for url in initial_directories:
