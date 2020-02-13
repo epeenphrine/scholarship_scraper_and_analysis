@@ -24,30 +24,36 @@ def connect(url):
             print(len(proxies_list))
             
     if len(proxies_list) >= 100:
+        error_count = 0
+
         for i in range(0, len(proxies_list)):
             try:
-                pick = random.choice(proxies_list)
+                if error_count <= 20:
+                    pick = random.choice(proxies_list)
 
-                ## building opener
-                proxy_support = urllib.request.ProxyHandler(pick)
-                opener = urllib.request.build_opener(proxy_support)
-                urllib.request.install_opener(opener)
+                    ## building opener
+                    proxy_support = urllib.request.ProxyHandler(pick)
+                    opener = urllib.request.build_opener(proxy_support)
+                    urllib.request.install_opener(opener)
 
-                ## requests
-                req = urllib.request.Request(url, headers={'User-Agent': "Mozilla/5.0"})
-                sauce = urllib.request.urlopen(req, timeout=1).read()
-                soup = bs.BeautifulSoup(sauce, 'lxml')
+                    ## requests
+                    req = urllib.request.Request(url, headers={'User-Agent': "Mozilla/5.0"})
+                    sauce = urllib.request.urlopen(req, timeout=1).read()
+                    soup = bs.BeautifulSoup(sauce, 'lxml')
 
 
-                print(f"{pick} WORKED")
-                ## break off the loop when we have a working proxy
-                return soup
+                    print(f"{pick} WORKED")
+                    ## break off the loop when we have a working proxy
+                    return soup
+                else:
+                    print('this url is probably bad or the proxies are bad')
+                    return
             except:
                 print(f"{pick} did not work")
                 proxies_list.remove(pick)
                 print(f"{pick} removed")
                 print(len(proxies_list))
-
+                error_count += 1 
             with open("proxydictlist.json", "w") as f:
                 json.dump(proxies_list, f)
             print("\n\n\n\n\n\n\n\n")

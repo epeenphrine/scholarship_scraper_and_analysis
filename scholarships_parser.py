@@ -3,7 +3,6 @@ import pandas as pd
 import re
 import numpy as np
 
-
 #non standard and non pip install
 import scholarships_parser as scholarships
 from connection import connect
@@ -48,17 +47,14 @@ def get_directories_dict(soup, *args):
     return directories_dict
 
 def get_scholarships(soup):
-    try:
-        df = pd.read_html(str(soup))
-        df = df[0]
-        print(df)
-        return data_clean(df)
-    except:
-        print('no table present')
+    df = pd.read_html(str(soup))
+    df = df[0]
+    print(df)
+    return data_clean(df)
 
 def data_clean(df): 
     #remove , and $ in column
-    
+    df_list = [] 
     df = df[df['Amount'] != "Varies"]
     df['amount_cleaned'] = df['Amount'].str.replace(',','')
     df['amount_cleaned'] = df['amount_cleaned'].str.replace('$', '')

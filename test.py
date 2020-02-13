@@ -1,15 +1,13 @@
 #standard and pip install
 import numpy as np
-import json 
-
+import time
+import os
+import pickle
 #non standard and non pip install
 import scholarships_parser as scholarships
 from connection import connect
 from config import url
 from proxyscrape import proxyscrape as scrape
-import time
-import os
-import json
 
 soup = connect(url)
 
@@ -25,14 +23,24 @@ for directory in directories:
 for soup in soup_pool:
     directories_dict = scholarships.get_directories_dict(soup, directories_dict)
 
+directories = scholarships.get_directories(directories_dict)
 
-
+print(len(directories))
 soup_pool = []
-print(directories)
-#for directory in directories:
-#    soup_pool.append(connect(directory))
-#for soup in soul_pool:
-#    scholarships.get_scholarships(soup)
+working_directories = []
+table_directories = []
+for directory in directories:
+    soup = connect(directory)
+    try:
+        scholarships.get_scholarships(soup)
+        table_directories.append(directory)
+    except:
+        print('probably no table in this url')
+
+with json 
+
+for soup in soup_pool:
+    scholarships.get_scholarships(soup)
 
 print('\n')
 print('*************************************')
