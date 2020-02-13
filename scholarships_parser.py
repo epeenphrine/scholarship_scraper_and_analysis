@@ -15,8 +15,8 @@ def get_title(directories_dict):
     for directory in directories_dict:
         for key in directory.items():
             titles.append(key)
-    return titles 
-
+    return titles
+    
 
 def get_directories(soup):
     directories_dict = []
