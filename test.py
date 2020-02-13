@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import scholarships_parser
-from connection import connect 
-=======
 #standard and pip install
 import numpy as np
 import json 
@@ -9,7 +5,6 @@ import json
 #non standard and non pip install
 import scholarships_parser as scholarships
 from connection import connect
->>>>>>> get_scholarships
 from config import url
 from proxyscrape import proxyscrape as scrape
 import time
@@ -18,14 +13,6 @@ import json
 
 soup = connect(url)
 
-<<<<<<< HEAD
-scholarships_parser.get_directories(soup)
-
-##soup_pool = scholarships_parser.get_directories2(directories)
-##for soup in soup_pool:
-    ##directories = scholarships_parser.get_directories(soup)
-#scholarships_parser.get_directories(soup)
-=======
 soup = connect(url) ## single soup object
 soup_pool = [] ## list of soup objects
 soup_puddle = [] ## a nested list of soup objects
@@ -70,4 +57,3 @@ print('*************************************')
 #    except:
 #        print("no table")
 #scholarships_parser.get_scholarships(soup)
->>>>>>> get_scholarships
