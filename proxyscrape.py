@@ -51,7 +51,6 @@ def proxyscrape():
             proxies_list.remove(pick)
             print(f"{pick} removed")
             print(len(proxies_list))
-            print(Exception)
 
     else: ## if proxies_list is empty, we get our proxies without configuring urllib for using proxies
         req = urllib.request.Request(url, headers={'User-Agent': "Magic Browser"})
@@ -61,7 +60,7 @@ def proxyscrape():
 
     ## use pandas to get tables and choose columns
 
-    df = pd.read_html(sauce) ## using pandas read_html method to parse through url
+    df = pd.read_html(sauce) ## using pandas read_html method to parse out the tables in HTML quick
     print(df, len(df))
     df = df[0]  ## df is a list of tables. We want first table.
 

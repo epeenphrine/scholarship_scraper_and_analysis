@@ -1,26 +1,47 @@
-import scholarships_parser
+#standard and pip install
+import numpy as np
+import json 
+
+#non standard and non pip install
+import scholarships_parser as scholarships
 from connection import connect
 from config import url
 
+soup = connect(url) ## single soup object
+soup_pool = [] ## list of soup objects
+soup_puddle = [] ## a nested list of soup objects
 
-soup = connect(url)
-soup_pool = []
-soup_puddle = []
-directories_list1 = scholarships_parser.get_directories(soup)
+directories_dict= scholarships.get_directories(soup) ## starts here to try to get all directories from the site 
+directories = scholarships.directories(directories_dict)
+titles = scholarships.get_title(directories_dict)
 
-for url in directories_list1:
-    soup_pool.append(connect(url))
-for soup1 in soup_pool:
-    soup_puddle.append(scholarships_parser.get_directories(soup1))
+print('\n')
 
-checking = []
-for items in soup_puddle:
-    for item in items:
-        if item not in checking:
-            checking.append(item)
 
-for item in checking:
-    print (item)
-
-print(len(checking))
+#for url in initial_directories:
+#    soup_pool.append(connect(url))
+#for soup1 in soup_pool:
+#    soup_puddle.append(scholarships_parser.get_directories(soup1))
+#
+#checking = []
+#for items in soup_puddle:
+#    for item in items:
+#        if item not in checking:
+#            checking.append(item)
+#
+#for item in checking:
+#    print (item)
+#
+#print(f"total : {len(checking)}")
+#x = np.array(checking)
+#print(f"unique : {len(np.unique(x))}")
+#
+###scholarship tables
+#for url in checking:
+#    try:
+#        soup = connect(url)
+#        print(url)
+#        scholarships_parser.get_scholarships(soup)
+#    except:
+#        print("no table")
 #scholarships_parser.get_scholarships(soup)
