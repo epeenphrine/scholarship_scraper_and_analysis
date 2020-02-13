@@ -5,12 +5,15 @@ import random
 import urllib.request
 import bs4 as bs
 import proxyscrape as scrape
-from config import url
 
 
 #file checks / proxy rotation / connection 
 def connect(url):
+<<<<<<< HEAD
     if os.path.exists("proxydictlist.json"):
+=======
+    if os.path.exists("proxydictlist.json"): #file check logic 
+>>>>>>> get_scholarships
         with open("proxydictlist.json") as f:
             proxies_list = json.load(f)
             print(f"attempting to connect to: {url}")
@@ -23,7 +26,7 @@ def connect(url):
             proxies_list = json.load(f)
             print(f"attempting to connect to: {url}")
             print(len(proxies_list))
-
+            
     if len(proxies_list) >= 100:
         for i in range(0, len(proxies_list)):
             try:

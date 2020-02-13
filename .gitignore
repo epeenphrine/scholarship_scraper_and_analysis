@@ -4,3 +4,5 @@ config.py
 *.db
 *.csv
 /__pycache__
+.idea
+.vscode
