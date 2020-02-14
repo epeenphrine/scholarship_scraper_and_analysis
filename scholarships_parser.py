@@ -46,7 +46,7 @@ def get_directories_dict(soup, *args):
     directories_dict = dict(zip(titles, constructed_urls))
     return directories_dict
 
-def get_scholarships(soup):
+def get_scholarships(soup, *args):
     df = pd.read_html(str(soup))
     df = df[0]
     print(df)
