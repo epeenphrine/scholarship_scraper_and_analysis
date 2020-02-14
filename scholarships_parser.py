@@ -53,7 +53,7 @@ def get_scholarships(soup, *args):
     return data_clean(df)
 
 def data_clean(df):
-'''need to use iloc instead to target columns'''
+    '''need to use iloc instead to target columns'''
     #remove , and $ in column
     #df = df[df['Amount'] != "Varies"]
     #df['amount_cleaned'] = df['Amount'].str.replace(',','')
