@@ -28,7 +28,6 @@ directories = scholarships.get_directories(directories_dict)
 
 print(len(directories))
 soup_pool = []
-working_directories = []
 table_directories = []
 for directory in directories:
     soup = connect(directory)
@@ -42,32 +41,3 @@ with open("table_directories.json", 'w') as f:
     json.dump(table_directories, f)
 print('\n')
 print('*************************************')
-
-
-#for url in initial_directories:
-#    soup_pool.append(connect(url))
-#for soup1 in soup_pool:
-#    soup_puddle.append(scholarships_parser.get_directories(soup1))
-#
-#checking = []
-#for items in soup_puddle:
-#    for item in items:
-#        if item not in checking:
-#            checking.append(item)
-#
-#for item in checking:
-#    print (item)
-#
-#print(f"total : {len(checking)}")
-#x = np.array(checking)
-#print(f"unique : {len(np.unique(x))}")
-#
-###scholarship tables
-#for url in checking:
-#    try:
-#        soup = connect(url)
-#        print(url)
-#        scholarships_parser.get_scholarships(soup)
-#    except:
-#        print("no table")
-#scholarships_parser.get_scholarships(soup)

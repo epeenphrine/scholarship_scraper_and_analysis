@@ -8,9 +8,9 @@ import scholarships_parser as scholarships
 from connection import connect
 from config import url
 
-base_url = "https://scholarships.com"
 
-## making sure only unique URL
+# used for constructing new url
+base_url = "https://scholarships.com"
 
 def get_directories(directories_dict):
     directories = []
@@ -52,15 +52,15 @@ def get_scholarships(soup, *args):
     print(df)
     return data_clean(df)
 
-def data_clean(df): 
+def data_clean(df):
+'''need to use iloc instead to target columns'''
     #remove , and $ in column
-    df_list = [] 
-    df = df[df['Amount'] != "Varies"]
-    df['amount_cleaned'] = df['Amount'].str.replace(',','')
-    df['amount_cleaned'] = df['amount_cleaned'].str.replace('$', '')
-    df['amount_cleaned'] = df['amount_cleaned'].str.replace('$', '')
-    #df['amount_cleaned'] = pd.to_numeric(df['amount_cleaned']) ## different way to convert str -> int
-    df['amount_cleaned'] = df['amount_cleaned'].astype(int)
+    #df = df[df['Amount'] != "Varies"]
+    #df['amount_cleaned'] = df['Amount'].str.replace(',','')
+    #df['amount_cleaned'] = df['amount_cleaned'].str.replace('$', '')
+    #df['amount_cleaned'] = df['amount_cleaned'].str.replace('$', '')
+    ##df['amount_cleaned'] = pd.to_numeric(df['amount_cleaned']) ## different way to convert str -> int
+    #df['amount_cleaned'] = df['amount_cleaned'].astype(int)
     return df
 
 def analysis(df):
